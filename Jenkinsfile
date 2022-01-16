@@ -6,7 +6,11 @@ pipeline {
     stages {
         stage('Greet'){
             steps {
-                echo "Hello: ${params.Name}"
+                sh """
+                #/bin/bash
+                node main.js ${params.Name}
+                
+                """
             }
         }
     }
