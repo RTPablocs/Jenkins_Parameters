@@ -6,7 +6,7 @@ pipeline {
       steps {
         sh """
           #/bin/bash
-          node jenkinsScripts/processA.js ${params.A}
+          python3 jenkinsScripts/processA.py ${params.A}
         """
       }
     }
@@ -14,7 +14,7 @@ pipeline {
       steps {
         sh """
           #/bin/bash
-          node jenkinsScripts/processB.js ${params.B}
+          python3 jenkinsScripts/processB.py ${params.B}
         """
       }
     }
@@ -22,7 +22,7 @@ pipeline {
       steps {
         sh """
           #/bin/bash
-          node jenkinsScripts/result.js
+          python3 jenkinsScripts/result.py
         """
       }
     }
