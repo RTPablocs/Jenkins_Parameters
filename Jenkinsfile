@@ -1,8 +1,6 @@
 pipeline {
   agent any
-  triggers {
-    cron('H/5 * * * *')
-  }
+
   stages {
     stage('A'){
       steps {
@@ -32,7 +30,7 @@ pipeline {
 
   }
   parameters {
-    string(name: 'A', description: 'A parameter', defaultValue: '0')
-    string(name: 'B', description: 'B parameter', defaultValue: '1')
+    string(name: 'A', description: 'A parameter')
+    string(name: 'B', description: 'B parameter')
   }
 }
