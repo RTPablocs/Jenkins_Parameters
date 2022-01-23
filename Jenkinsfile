@@ -33,6 +33,6 @@ pipeline {
 
   }
   parameters {
-    string(name: 'Name', description: 'Name parameter')
+    string(name: 'Name', description: 'Name parameter', defaultValue: 'Pepe')
   }
 }
