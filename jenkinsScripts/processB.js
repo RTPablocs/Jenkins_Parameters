@@ -1,5 +1,3 @@
-const paramA = process.argv[2]
-
 const { exec } = require('child_process');
 
 const paramA = process.argv[2]
