@@ -1,8 +1,10 @@
+const { exec } = require('child_process');
+
 const paramA = process.argv[2]
 
 if (paramA%2 == 0){
-    process.env.STAGE_ONE = true
+    exec('export STAGE_ONE=true')
 } else {
-    process.env.STAGE_ONE = false
+    exec('export STAGE_ONE=false')
 }
 
