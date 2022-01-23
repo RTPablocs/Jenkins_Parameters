@@ -4,35 +4,35 @@ pipeline {
     cron('H/5 * * * *')
   }
   stages {
-    stage('Greet') {
+    stage('A'){
       steps {
         sh """
-                        #/bin/bash
-                        node main.js ${params.Name}
-                        
-                        """
+          #/bin/bash
+          node jenkinsScripts/processA.js ${params.A}
+        """
       }
     }
-
-    stage('Parallel') {
-      parallel {
-        stage('Parallel A') {
-          steps {
-            echo 'Parallel A'
-          }
-        }
-
-        stage('Parallel B') {
-          steps {
-            echo 'Parallel B'
-          }
-        }
-
+    stage('B'){
+      steps {
+        sh """
+          #/bin/bash
+          node jenkinsScripts/processB.js ${params.B}
+        """
       }
     }
+    stage('Result'){
+      steps {
+        sh """
+          #/bin/bash
+          node jenkinsScripts/result.js
+        """
+      }
+    }
+    
 
   }
   parameters {
-    string(name: 'Name', description: 'Name parameter', defaultValue: 'Pepe')
+    string(name: 'A', description: 'A parameter', defaultValue: '0')
+    string(name: 'B', description: 'B parameter', defaultValue: '1')
   }
 }
